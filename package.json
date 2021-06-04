@@ -15,7 +15,8 @@
         "build:dev": "yarn autogen && webpack --mode development",
         "build:prod": "yarn autogen && webpack --mode production",
         "test": "jest -c ./jest.config.js --rootDir . -i",
-        "test-coverage": "jest -c ./jest.config.js --rootDir . -i --collect-coverage --collectCoverageFrom=./src/lib/**/*.ts "
+        "test-coverage": "jest -c ./jest.config.js --rootDir . -i --collect-coverage --collectCoverageFrom=./src/lib/**/*.ts ",
+        "publish-npm-public": "yarn build:prod && yarn test-coverage && yarn publish --access public"
     },
     "dependencies": {},
     "peerDependencies": {
