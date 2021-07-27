@@ -55,13 +55,13 @@
 					<a href="../modules.html">@youwol/flux-pyodide</a>
 				</li>
 				<li>
-					<a href="../modules/lib_interpreter_module.html">lib/interpreter.module</a>
+					<a href="../modules/lib_interpreter_base_module.html">lib/interpreter-base.module</a>
 				</li>
 				<li>
-					<a href="../modules/lib_interpreter_module.moduleinterpreter.html">ModuleInterpreter</a>
+					<a href="../modules/lib_interpreter_base_module.interpreterbase.html">InterpreterBase</a>
 				</li>
 				<li>
-					<a href="lib_interpreter_module.moduleinterpreter.persistentdata.html">PersistentData</a>
+					<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html">PersistentData</a>
 				</li>
 			</ul>
 			<h1>Class PersistentData</h1>
@@ -84,10 +84,13 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html" class="tsd-signature-type" data-tsd-kind="Class">PersistentData</a>
+						<span class="target">PersistentData</span>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">PersistentData</span>
+								<a href="lib_interpreter_worker_module.moduleinterpreterworker.persistentdata.html" class="tsd-signature-type" data-tsd-kind="Class">PersistentData</a>
+							</li>
+							<li>
+								<a href="lib_interpreter_module.moduleinterpreter.persistentdata.html" class="tsd-signature-type" data-tsd-kind="Class">PersistentData</a>
 							</li>
 						</ul>
 					</li>
@@ -100,21 +103,21 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="lib_interpreter_module.moduleinterpreter.persistentdata.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-inherited">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="lib_interpreter_module.moduleinterpreter.persistentdata.html#code" class="tsd-kind-icon">code</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="lib_interpreter_module.moduleinterpreter.persistentdata.html#outputcount" class="tsd-kind-icon">output<wbr>Count</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="lib_interpreter_module.moduleinterpreter.persistentdata.html#packages" class="tsd-kind-icon">packages</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#code" class="tsd-kind-icon">code</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#outputcount" class="tsd-kind-icon">output<wbr>Count</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#packages" class="tsd-kind-icon">packages</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-inherited">
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="lib_interpreter_module.moduleinterpreter.persistentdata.html#getpackages" class="tsd-kind-icon">get<wbr>Packages</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#getpackages" class="tsd-kind-icon">get<wbr>Packages</a></li>
 							</ul>
 						</section>
 					</div>
@@ -122,79 +125,85 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Persistent<wbr>Data<span class="tsd-signature-symbol">(</span>d<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_interpreter_module.moduleinterpreter.persistentdata.html" class="tsd-signature-type" data-tsd-kind="Class">PersistentData</a></li>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Persistent<wbr>Data<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>code<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>outputCount<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>packages<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_interpreter_base_module.interpreterbase.persistentdata.html" class="tsd-signature-type" data-tsd-kind="Class">PersistentData</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="lib_interpreter_base_module.interpreterbase.persistentdata.html">PersistentData</a>.<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-pyodide/blob/129254d/src/lib/interpreter.module.ts#L32">src/lib/interpreter.module.ts:32</a></li>
+									<li>Defined in src/lib/interpreter-base.module.ts:99</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>d: <span class="tsd-signature-type">any</span></h5>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>code<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>outputCount<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>packages<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> code<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> output<wbr>Count<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> packages<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="lib_interpreter_module.moduleinterpreter.persistentdata.html" class="tsd-signature-type" data-tsd-kind="Class">PersistentData</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="lib_interpreter_base_module.interpreterbase.persistentdata.html" class="tsd-signature-type" data-tsd-kind="Class">PersistentData</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="code" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> code</h3>
 					<div class="tsd-signature tsd-kind-icon">code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="lib_interpreter_base_module.interpreterbase.persistentdata.html">PersistentData</a>.<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#code">code</a></p>
 						<ul>
 							<li>Defined in src/lib/interpreter-base.module.ts:80</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="outputcount" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> output<wbr>Count</h3>
 					<div class="tsd-signature tsd-kind-icon">output<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="lib_interpreter_base_module.interpreterbase.persistentdata.html">PersistentData</a>.<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#outputcount">outputCount</a></p>
 						<ul>
 							<li>Defined in src/lib/interpreter-base.module.ts:92</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="packages" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> packages</h3>
 					<div class="tsd-signature tsd-kind-icon">packages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="lib_interpreter_base_module.interpreterbase.persistentdata.html">PersistentData</a>.<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#packages">packages</a></p>
 						<ul>
 							<li>Defined in src/lib/interpreter-base.module.ts:86</li>
 						</ul>
 					</aside>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getpackages" class="tsd-anchor"></a>
 					<h3>get<wbr>Packages</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>Packages<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="lib_interpreter_base_module.interpreterbase.persistentdata.html">PersistentData</a>.<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#getpackages">getPackages</a></p>
 								<ul>
 									<li>Defined in src/lib/interpreter-base.module.ts:95</li>
 								</ul>
@@ -216,32 +225,35 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_interpreter_module.moduleinterpreter.module.html" class="tsd-kind-icon">Module</a>
+						<a href="lib_interpreter_base_module.interpreterbase.module.html" class="tsd-kind-icon">Module</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_interpreter_module.moduleinterpreter.persistentdata.html" class="tsd-kind-icon">Persistent<wbr>Data</a>
+						<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html" class="tsd-kind-icon">Persistent<wbr>Data</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="lib_interpreter_module.moduleinterpreter.persistentdata.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="lib_interpreter_module.moduleinterpreter.persistentdata.html#code" class="tsd-kind-icon">code</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#code" class="tsd-kind-icon">code</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="lib_interpreter_module.moduleinterpreter.persistentdata.html#outputcount" class="tsd-kind-icon">output<wbr>Count</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#outputcount" class="tsd-kind-icon">output<wbr>Count</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="lib_interpreter_module.moduleinterpreter.persistentdata.html#packages" class="tsd-kind-icon">packages</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#packages" class="tsd-kind-icon">packages</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="lib_interpreter_module.moduleinterpreter.persistentdata.html#getpackages" class="tsd-kind-icon">get<wbr>Packages</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="lib_interpreter_base_module.interpreterbase.persistentdata.html#getpackages" class="tsd-kind-icon">get<wbr>Packages</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-namespace">
+						<a href="../modules/lib_interpreter_base_module.interpreterbase.html#svgicon" class="tsd-kind-icon">svg<wbr>Icon</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -257,11 +269,9 @@
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-			</ul>
-			<ul class="tsd-legend">
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 		</div>
 	</div>
