@@ -1,6 +1,6 @@
 {
     "name": "@youwol/flux-pyodide",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Collection of modules to run Python code in the browser",
     "author": "",
     "keywords": [
