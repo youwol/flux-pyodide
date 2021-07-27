@@ -1,52 +1,83 @@
-import { getUrlBase } from '@youwol/cdn-client';
-import { DataFrame, Serie } from '@youwol/dataframe';
+import { getUrlBase, parseResourceId } from '@youwol/cdn-client';
+import { AUTO_GENERATED as DF_AUTO_GENERATED} from '@youwol/dataframe';
 import { FluxPack, IEnvironment } from '@youwol/flux-core'
+import { forkJoin } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { AUTO_GENERATED } from '../auto_generated'
+import { exposePythonUtilities, findDataframePaths, outputPython2Js, recoverDataFrames } from './utilities';
 
 export var pyodide: any
 
 export function install(environment: IEnvironment) {
-    let indexURL = getUrlBase("@pyodide/pyodide", "0.17.0") + "/full"
 
-    return window['loadPyodide']({indexURL})
+    let indexPyodide = getUrlBase("@pyodide/pyodide", "0.17.0") + "/full"
+    let dataframeResourceId = `@youwol/dataframe#${DF_AUTO_GENERATED.version}~dist/@youwol/dataframe.js`
+    let pyodideResourceId =  `@pyodide/pyodide#0.17.0~full/pyodide.js` 
+
+    let mainThread$ = window['loadPyodide']({indexURL:indexPyodide})
     .then( (py) => {
         pyodide = py 
-        pyodide.globals.set(
-            "createDataFrame", 
-            (name, series) =>  {
-                let s = Object.fromEntries(series.toJs().entries());
-                return DataFrame.create( { series: s, userData:{name} }) 
-            }
-        )
-        pyodide.globals.set(
-            "createSerie", 
-            (array, itemSize) =>  Serie.create( { array: array.toJs(), itemSize })
-        );
-        pyodide.runPython(`
-def toNpArray(serie, flat = False):
-    array = np.array(serie.array.to_py())
-    if not flat:        
-        x_count = int(serie.array.length/serie.itemSize)
-        array = array.reshape((x_count,serie.itemSize))
-    return array       
-
-def toPdSerie(serie, flat = False):
-    array = toNpArray(serie, flat)
-    if flat:
-        return pd.Series(data=array)
-    return pd.Series(data=array.tolist())
-
-def toPdDataFrame(df, columns, flat = False):
-    series = {}
-    for k in df.series.to_py():
-        if k not in columns:
-            continue
-        serie = df.series.to_py().get(k)
-        series[k] = toPdSerie(serie, flat)
-    return pd.DataFrame(series)
-
-`)     
+        exposePythonUtilities(window, pyodide)
     })
+    
+    let workersThread$ = environment.fetchSources([
+        parseResourceId(dataframeResourceId),
+        parseResourceId(pyodideResourceId)
+    ])
+    .pipe(
+        tap( (assets) => {
+            environment.workerPool.import({
+                sources: [
+                    {
+                        id: dataframeResourceId,
+                        src: assets[0].content,
+                        import: (workerScope, src) => {
+                            new Function(src)( workerScope, undefined)
+                        }
+                    },
+                    {
+                        id: pyodideResourceId,
+                        src: assets[1].content,
+                        sideEffects: (workerScope, exports) => {
+                            let indexUrl = workerScope['@youwol/flux-pyodide.indexPyodide']
+                            return workerScope
+                            .loadPyodide({indexURL:`${workerScope.location.origin}${indexUrl}`})
+                            .then( (pyodide) => {
+                                let exposePythonUtilities = workerScope['@youwol/flux-pyodide.exposePythonUtilities']
+                                exposePythonUtilities(workerScope, pyodide)
+                            })
+                        }
+                    }
+                ],
+                functions:[
+                    {
+                        id:'@youwol/flux-pyodide.exposePythonUtilities', 
+                        target:exposePythonUtilities
+                    },
+                    {
+                        id:'@youwol/flux-pyodide.findDataframePaths', 
+                        target:findDataframePaths
+                    },
+                    {
+                        id:'@youwol/flux-pyodide.outputPython2Js', 
+                        target:outputPython2Js
+                    },
+                    {
+                        id:'@youwol/flux-pyodide.recoverDataFrames', 
+                        target:recoverDataFrames
+                    }
+                ],
+                variables:[
+                    {
+                        id:'@youwol/flux-pyodide.indexPyodide',
+                        value:indexPyodide
+                    }
+                ]
+            })
+        })
+    )
+
+    return forkJoin([mainThread$, workersThread$])
 }
 
 export let pack = new FluxPack({
